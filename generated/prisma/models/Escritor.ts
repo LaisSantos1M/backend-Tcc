@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums.js"
-import type * as Prisma from "../internal/prismaNamespace.js"
+import type * as $Enums from "../enums.ts"
+import type * as Prisma from "../internal/prismaNamespace.ts"
 
 /**
  * Model Escritor
@@ -224,6 +224,7 @@ export type EscritorWhereInput = {
   senha?: Prisma.StringFilter<"Escritor"> | string
   createdAt?: Prisma.DateTimeFilter<"Escritor"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Escritor"> | Date | string
+  livros?: Prisma.LivrosListRelationFilter
 }
 
 export type EscritorOrderByWithRelationInput = {
@@ -233,6 +234,7 @@ export type EscritorOrderByWithRelationInput = {
   senha?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  livros?: Prisma.LivrosOrderByRelationAggregateInput
 }
 
 export type EscritorWhereUniqueInput = Prisma.AtLeast<{
@@ -245,6 +247,7 @@ export type EscritorWhereUniqueInput = Prisma.AtLeast<{
   senha?: Prisma.StringFilter<"Escritor"> | string
   createdAt?: Prisma.DateTimeFilter<"Escritor"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Escritor"> | Date | string
+  livros?: Prisma.LivrosListRelationFilter
 }, "id" | "email">
 
 export type EscritorOrderByWithAggregationInput = {
@@ -279,6 +282,7 @@ export type EscritorCreateInput = {
   senha: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  livros?: Prisma.LivrosCreateNestedManyWithoutEscritorInput
 }
 
 export type EscritorUncheckedCreateInput = {
@@ -288,6 +292,7 @@ export type EscritorUncheckedCreateInput = {
   senha: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  livros?: Prisma.LivrosUncheckedCreateNestedManyWithoutEscritorInput
 }
 
 export type EscritorUpdateInput = {
@@ -296,6 +301,7 @@ export type EscritorUpdateInput = {
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  livros?: Prisma.LivrosUpdateManyWithoutEscritorNestedInput
 }
 
 export type EscritorUncheckedUpdateInput = {
@@ -305,6 +311,7 @@ export type EscritorUncheckedUpdateInput = {
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  livros?: Prisma.LivrosUncheckedUpdateManyWithoutEscritorNestedInput
 }
 
 export type EscritorCreateManyInput = {
@@ -368,6 +375,16 @@ export type EscritorSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type EscritorListRelationFilter = {
+  every?: Prisma.EscritorWhereInput
+  some?: Prisma.EscritorWhereInput
+  none?: Prisma.EscritorWhereInput
+}
+
+export type EscritorOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -384,6 +401,149 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type EscritorCreateNestedManyWithoutLivrosInput = {
+  create?: Prisma.XOR<Prisma.EscritorCreateWithoutLivrosInput, Prisma.EscritorUncheckedCreateWithoutLivrosInput> | Prisma.EscritorCreateWithoutLivrosInput[] | Prisma.EscritorUncheckedCreateWithoutLivrosInput[]
+  connectOrCreate?: Prisma.EscritorCreateOrConnectWithoutLivrosInput | Prisma.EscritorCreateOrConnectWithoutLivrosInput[]
+  connect?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+}
+
+export type EscritorUncheckedCreateNestedManyWithoutLivrosInput = {
+  create?: Prisma.XOR<Prisma.EscritorCreateWithoutLivrosInput, Prisma.EscritorUncheckedCreateWithoutLivrosInput> | Prisma.EscritorCreateWithoutLivrosInput[] | Prisma.EscritorUncheckedCreateWithoutLivrosInput[]
+  connectOrCreate?: Prisma.EscritorCreateOrConnectWithoutLivrosInput | Prisma.EscritorCreateOrConnectWithoutLivrosInput[]
+  connect?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+}
+
+export type EscritorUpdateManyWithoutLivrosNestedInput = {
+  create?: Prisma.XOR<Prisma.EscritorCreateWithoutLivrosInput, Prisma.EscritorUncheckedCreateWithoutLivrosInput> | Prisma.EscritorCreateWithoutLivrosInput[] | Prisma.EscritorUncheckedCreateWithoutLivrosInput[]
+  connectOrCreate?: Prisma.EscritorCreateOrConnectWithoutLivrosInput | Prisma.EscritorCreateOrConnectWithoutLivrosInput[]
+  upsert?: Prisma.EscritorUpsertWithWhereUniqueWithoutLivrosInput | Prisma.EscritorUpsertWithWhereUniqueWithoutLivrosInput[]
+  set?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  disconnect?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  delete?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  connect?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  update?: Prisma.EscritorUpdateWithWhereUniqueWithoutLivrosInput | Prisma.EscritorUpdateWithWhereUniqueWithoutLivrosInput[]
+  updateMany?: Prisma.EscritorUpdateManyWithWhereWithoutLivrosInput | Prisma.EscritorUpdateManyWithWhereWithoutLivrosInput[]
+  deleteMany?: Prisma.EscritorScalarWhereInput | Prisma.EscritorScalarWhereInput[]
+}
+
+export type EscritorUncheckedUpdateManyWithoutLivrosNestedInput = {
+  create?: Prisma.XOR<Prisma.EscritorCreateWithoutLivrosInput, Prisma.EscritorUncheckedCreateWithoutLivrosInput> | Prisma.EscritorCreateWithoutLivrosInput[] | Prisma.EscritorUncheckedCreateWithoutLivrosInput[]
+  connectOrCreate?: Prisma.EscritorCreateOrConnectWithoutLivrosInput | Prisma.EscritorCreateOrConnectWithoutLivrosInput[]
+  upsert?: Prisma.EscritorUpsertWithWhereUniqueWithoutLivrosInput | Prisma.EscritorUpsertWithWhereUniqueWithoutLivrosInput[]
+  set?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  disconnect?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  delete?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  connect?: Prisma.EscritorWhereUniqueInput | Prisma.EscritorWhereUniqueInput[]
+  update?: Prisma.EscritorUpdateWithWhereUniqueWithoutLivrosInput | Prisma.EscritorUpdateWithWhereUniqueWithoutLivrosInput[]
+  updateMany?: Prisma.EscritorUpdateManyWithWhereWithoutLivrosInput | Prisma.EscritorUpdateManyWithWhereWithoutLivrosInput[]
+  deleteMany?: Prisma.EscritorScalarWhereInput | Prisma.EscritorScalarWhereInput[]
+}
+
+export type EscritorCreateWithoutLivrosInput = {
+  nome: string
+  email: string
+  senha: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type EscritorUncheckedCreateWithoutLivrosInput = {
+  id?: number
+  nome: string
+  email: string
+  senha: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type EscritorCreateOrConnectWithoutLivrosInput = {
+  where: Prisma.EscritorWhereUniqueInput
+  create: Prisma.XOR<Prisma.EscritorCreateWithoutLivrosInput, Prisma.EscritorUncheckedCreateWithoutLivrosInput>
+}
+
+export type EscritorUpsertWithWhereUniqueWithoutLivrosInput = {
+  where: Prisma.EscritorWhereUniqueInput
+  update: Prisma.XOR<Prisma.EscritorUpdateWithoutLivrosInput, Prisma.EscritorUncheckedUpdateWithoutLivrosInput>
+  create: Prisma.XOR<Prisma.EscritorCreateWithoutLivrosInput, Prisma.EscritorUncheckedCreateWithoutLivrosInput>
+}
+
+export type EscritorUpdateWithWhereUniqueWithoutLivrosInput = {
+  where: Prisma.EscritorWhereUniqueInput
+  data: Prisma.XOR<Prisma.EscritorUpdateWithoutLivrosInput, Prisma.EscritorUncheckedUpdateWithoutLivrosInput>
+}
+
+export type EscritorUpdateManyWithWhereWithoutLivrosInput = {
+  where: Prisma.EscritorScalarWhereInput
+  data: Prisma.XOR<Prisma.EscritorUpdateManyMutationInput, Prisma.EscritorUncheckedUpdateManyWithoutLivrosInput>
+}
+
+export type EscritorScalarWhereInput = {
+  AND?: Prisma.EscritorScalarWhereInput | Prisma.EscritorScalarWhereInput[]
+  OR?: Prisma.EscritorScalarWhereInput[]
+  NOT?: Prisma.EscritorScalarWhereInput | Prisma.EscritorScalarWhereInput[]
+  id?: Prisma.IntFilter<"Escritor"> | number
+  nome?: Prisma.StringFilter<"Escritor"> | string
+  email?: Prisma.StringFilter<"Escritor"> | string
+  senha?: Prisma.StringFilter<"Escritor"> | string
+  createdAt?: Prisma.DateTimeFilter<"Escritor"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Escritor"> | Date | string
+}
+
+export type EscritorUpdateWithoutLivrosInput = {
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EscritorUncheckedUpdateWithoutLivrosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type EscritorUncheckedUpdateManyWithoutLivrosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type EscritorCountOutputType
+ */
+
+export type EscritorCountOutputType = {
+  livros: number
+}
+
+export type EscritorCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  livros?: boolean | EscritorCountOutputTypeCountLivrosArgs
+}
+
+/**
+ * EscritorCountOutputType without action
+ */
+export type EscritorCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EscritorCountOutputType
+   */
+  select?: Prisma.EscritorCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * EscritorCountOutputType without action
+ */
+export type EscritorCountOutputTypeCountLivrosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LivrosWhereInput
+}
 
 
 export type EscritorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -393,6 +553,8 @@ export type EscritorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   senha?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  livros?: boolean | Prisma.Escritor$livrosArgs<ExtArgs>
+  _count?: boolean | Prisma.EscritorCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["escritor"]>
 
 export type EscritorSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -423,10 +585,18 @@ export type EscritorSelectScalar = {
 }
 
 export type EscritorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "email" | "senha" | "createdAt" | "updatedAt", ExtArgs["result"]["escritor"]>
+export type EscritorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  livros?: boolean | Prisma.Escritor$livrosArgs<ExtArgs>
+  _count?: boolean | Prisma.EscritorCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type EscritorIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type EscritorIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $EscritorPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Escritor"
-  objects: {}
+  objects: {
+    livros: Prisma.$LivrosPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     nome: string
@@ -828,6 +998,7 @@ readonly fields: EscritorFieldRefs;
  */
 export interface Prisma__EscritorClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  livros<T extends Prisma.Escritor$livrosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Escritor$livrosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LivrosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -880,6 +1051,10 @@ export type EscritorFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
+  /**
    * Filter, which Escritor to fetch.
    */
   where: Prisma.EscritorWhereUniqueInput
@@ -898,6 +1073,10 @@ export type EscritorFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
+  /**
    * Filter, which Escritor to fetch.
    */
   where: Prisma.EscritorWhereUniqueInput
@@ -915,6 +1094,10 @@ export type EscritorFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Escritor
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
   /**
    * Filter, which Escritor to fetch.
    */
@@ -964,6 +1147,10 @@ export type EscritorFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
+  /**
    * Filter, which Escritor to fetch.
    */
   where?: Prisma.EscritorWhereInput
@@ -1011,6 +1198,10 @@ export type EscritorFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Escritor
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
   /**
    * Filter, which Escritors to fetch.
    */
@@ -1060,6 +1251,10 @@ export type EscritorCreateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
+  /**
    * The data needed to create a Escritor.
    */
   data: Prisma.XOR<Prisma.EscritorCreateInput, Prisma.EscritorUncheckedCreateInput>
@@ -1105,6 +1300,10 @@ export type EscritorUpdateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Escritor
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
   /**
    * The data needed to update a Escritor.
    */
@@ -1172,6 +1371,10 @@ export type EscritorUpsertArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
+  /**
    * The filter to search for the Escritor to update in case it exists.
    */
   where: Prisma.EscritorWhereUniqueInput
@@ -1198,6 +1401,10 @@ export type EscritorDeleteArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
+  /**
    * Filter which Escritor to delete.
    */
   where: Prisma.EscritorWhereUniqueInput
@@ -1218,6 +1425,30 @@ export type EscritorDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
+ * Escritor.livros
+ */
+export type Escritor$livrosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Livros
+   */
+  select?: Prisma.LivrosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Livros
+   */
+  omit?: Prisma.LivrosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LivrosInclude<ExtArgs> | null
+  where?: Prisma.LivrosWhereInput
+  orderBy?: Prisma.LivrosOrderByWithRelationInput | Prisma.LivrosOrderByWithRelationInput[]
+  cursor?: Prisma.LivrosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LivrosScalarFieldEnum | Prisma.LivrosScalarFieldEnum[]
+}
+
+/**
  * Escritor without action
  */
 export type EscritorDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1229,4 +1460,8 @@ export type EscritorDefaultArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Escritor
    */
   omit?: Prisma.EscritorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscritorInclude<ExtArgs> | null
 }

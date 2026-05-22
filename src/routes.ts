@@ -1,6 +1,6 @@
-import { authentication } from "./middlewares/authentication.js";
+import { authentication } from "./middlewares/authentication";
 import { Router } from "express";
-import escritoresController from "./controllers/escritores.js";
+import escritoresController from "./controllers/escritores";
 
 const routes = Router();
 routes.get("/", (req, res) => 

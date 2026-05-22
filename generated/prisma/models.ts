@@ -8,5 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Escritor.js'
-export type * from './commonInputTypes.js'
+export type * from './models/Escritor.ts'
+export type * from './models/Livros.ts'
+export type * from './commonInputTypes.ts'

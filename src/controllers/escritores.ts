@@ -3,6 +3,7 @@ import type { Request, Response } from "express";
 import { prisma } from "../../config/prisma.js";
 import primaErrorCodes from "../../config/prismaErrorCode.json" with { type: "json" };
 import { Prisma } from "../../generated/prisma/client.js";
+import bcrypt from "bcrypt";
 
 
 export default {
@@ -23,11 +24,12 @@ export default {
 
     create: async (request: Request, response: Response) => {
         try {
-            const { nome, email } = request.body;
+            const { nome, email, senha } = request.body;
             const user = await prisma.escritor.create({
                 data: {
                     nome,
                     email,
+                    senha: bcrypt.hashSync(senha, +process.env.BCRYPT_ROUNDS!)
                 },
             });
             return response.status(201).json(user);
@@ -75,13 +77,13 @@ export default {
         }
 
         try {
-            const { nome, idade, email, cpf } = request.body;
+            const { nome, email, senha } = request.body;
             const user = await prisma.escritor.update({
                 data: {
                     nome,
-                    cpf,
                     email,
-                    idade,
+                    senha,
+                    
                 },
                 where: { id },
             });

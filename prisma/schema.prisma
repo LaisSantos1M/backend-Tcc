@@ -5,7 +5,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -19,5 +19,17 @@ model Escritor{
   senha String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  livros Livros[]
+
+}
+
+model Livros{
+  id Int @id @default(autoincrement())
+  titulo String
+  ano Int 
+  editora String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  escritor Escritor[]
 
 }

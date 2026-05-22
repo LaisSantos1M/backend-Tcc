@@ -16,10 +16,10 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "../models.js"
-import { type PrismaClient } from "./class.js"
+import type * as Prisma from "../models.ts"
+import { type PrismaClient } from "./class.ts"
 
-export type * from '../models.js'
+export type * from '../models.ts'
 
 export type DMMF = typeof runtime.DMMF
 
@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Escritor: 'Escritor'
+  Escritor: 'Escritor',
+  Livros: 'Livros'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "escritor"
+    modelProps: "escritor" | "livros"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Livros: {
+      payload: Prisma.$LivrosPayload<ExtArgs>
+      fields: Prisma.LivrosFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LivrosFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LivrosFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>
+        }
+        findFirst: {
+          args: Prisma.LivrosFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LivrosFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>
+        }
+        findMany: {
+          args: Prisma.LivrosFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>[]
+        }
+        create: {
+          args: Prisma.LivrosCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>
+        }
+        createMany: {
+          args: Prisma.LivrosCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LivrosCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>[]
+        }
+        delete: {
+          args: Prisma.LivrosDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>
+        }
+        update: {
+          args: Prisma.LivrosUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>
+        }
+        deleteMany: {
+          args: Prisma.LivrosDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LivrosUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LivrosUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>[]
+        }
+        upsert: {
+          args: Prisma.LivrosUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivrosPayload>
+        }
+        aggregate: {
+          args: Prisma.LivrosAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLivros>
+        }
+        groupBy: {
+          args: Prisma.LivrosGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LivrosGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LivrosCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LivrosCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -524,6 +599,18 @@ export const EscritorScalarFieldEnum = {
 } as const
 
 export type EscritorScalarFieldEnum = (typeof EscritorScalarFieldEnum)[keyof typeof EscritorScalarFieldEnum]
+
+
+export const LivrosScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  ano: 'ano',
+  editora: 'editora',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LivrosScalarFieldEnum = (typeof LivrosScalarFieldEnum)[keyof typeof LivrosScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -678,6 +765,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   escritor?: Prisma.EscritorOmit
+  livros?: Prisma.LivrosOmit
 }
 
 /* Types for Logging */
